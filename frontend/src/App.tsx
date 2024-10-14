@@ -8,6 +8,8 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Artists from './pages/Artists';
 import PrivateRoute from './components/PrivateRoute';
+// Eliminar la importación de TooltipProvider
+// import { TooltipProvider } from 'react-tooltip';
 
 const App: React.FC = () => {
   return (

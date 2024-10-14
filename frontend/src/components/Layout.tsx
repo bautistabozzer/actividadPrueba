@@ -39,7 +39,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="mt-16"></div> {/* Ajusta según la altura del Navbar */}
 
         {/* Contenido */}
-        <main className="p-6 flex-1 overflow-auto mb-16"> {/* Ajusta el margen inferior para el Footer fijo */}
+        <main
+          className={`
+            p-6 flex-1 overflow-auto mb-16
+            transition-all duration-300 ease-in-out
+            ${isSidebarOpen ? 'ml-52' : 'ml-20'}
+            md:ml-52
+          `}
+        >
           {children}
         </main>
 

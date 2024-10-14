@@ -2,6 +2,7 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
+import { FaBars } from 'react-icons/fa'; // Icono para abrir el Sidebar
 
 interface NavbarProps {
   toggleSidebar: () => void;
@@ -24,21 +25,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
     <nav className="bg-gray-800 text-white px-6 py-4 flex justify-between items-center fixed top-0 left-0 right-0 z-40">
       {/* Botón para abrir el Sidebar */}
       <button onClick={toggleSidebar} className="mr-4 focus:outline-none">
-        {/* Icono de menú */}
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
+        <FaBars size={24} className="text-gray-300 hover:text-white transition-colors" />
       </button>
 
       <h1 className="text-xl font-bold">Music App</h1>
