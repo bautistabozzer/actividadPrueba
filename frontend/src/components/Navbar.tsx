@@ -1,30 +1,21 @@
 // src/components/Navbar.tsx
-import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../contexts/AuthContext';
-import { FaBars } from 'react-icons/fa'; // Icono para abrir el Sidebar
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaBars } from 'react-icons/fa';
 
 interface NavbarProps {
   toggleSidebar: () => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
-  const { isAuthenticated, logout } = useContext(AuthContext);
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-  };
-
-  if (!isAuthenticated) {
-    return null; // No renderizar el Navbar si no está autenticado
-  }
-
   return (
     <nav className="bg-gray-800 text-white px-6 py-4 flex justify-between items-center fixed top-0 left-0 right-0 z-40">
       {/* Botón para abrir el Sidebar */}
-      <button onClick={toggleSidebar} className="mr-4 focus:outline-none">
+      <button
+        onClick={toggleSidebar}
+        aria-label="Abrir Sidebar"
+        className="mr-4 focus:outline-none"
+      >
         <FaBars size={24} className="text-gray-300 hover:text-white transition-colors" />
       </button>
 
@@ -48,7 +39,9 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
         </li>
         <li>
           <button
-            onClick={handleLogout}
+            onClick={() => {
+              // Implementa la lógica de logout aquí
+            }}
             className="
               bg-transparent 
               border 

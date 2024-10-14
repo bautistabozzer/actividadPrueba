@@ -42,9 +42,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <main
           className={`
             p-6 flex-1 overflow-auto mb-16
-            transition-all duration-300 ease-in-out
-            ${isSidebarOpen ? 'ml-52' : 'ml-20'}
-            md:ml-52
+            transition-margin duration-300 ease-in-out
+            ${isSidebarOpen ? 'ml-64' : 'ml-20'}
           `}
         >
           {children}

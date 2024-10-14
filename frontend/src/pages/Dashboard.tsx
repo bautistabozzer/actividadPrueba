@@ -1,62 +1,79 @@
 // src/pages/Dashboard.tsx
-import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../contexts/AuthContext';
-import { fetchUserData } from '../services/userService'; // Asegúrate de tener este servicio
-import { UserData } from '../types'; // Define la interfaz UserData según tus necesidades
+import React from 'react';
+import { FaChartLine, FaUsers, FaMusic } from 'react-icons/fa';
 
 const Dashboard: React.FC = () => {
-  const { isAuthenticated } = useContext(AuthContext);
-  const [userData, setUserData] = useState<UserData | null>(null);
-  const [error, setError] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    const getUserData = async () => {
-      try {
-        setLoading(true);
-        const data = await fetchUserData();
-        setUserData(data);
-      } catch (err: unknown) {
-        if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError('Error desconocido al cargar los datos del usuario.');
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (isAuthenticated) {
-      getUserData();
-    }
-  }, [isAuthenticated]);
-
-  if (!isAuthenticated) {
-    return null; // O puedes redirigir al usuario a la página de login
-  }
-
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Dashboard</h2>
-      {loading ? (
-        <p className="text-gray-700">Cargando datos...</p>
-      ) : error ? (
-        <p className="text-red-500">{error}</p>
-      ) : userData ? (
-        <div className="bg-white shadow-md rounded-lg p-6">
-          <h3 className="text-xl font-semibold mb-4">Información del Usuario</h3>
-          <p className="mb-2">
-            <span className="font-medium">Nombre:</span> {userData.name}
-          </p>
-          <p className="mb-2">
-            <span className="font-medium">Correo Electrónico:</span> {userData.email}
-          </p>
-          {/* Añade más información según tus necesidades */}
+    <div className="flex flex-col space-y-6">
+      {/* Encabezado */}
+      <h2 className="text-3xl font-semibold">Dashboard</h2>
+
+      {/* Sección de Estadísticas */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Estadística 1 */}
+        <div className="bg-white shadow rounded-lg p-6 flex items-center space-x-4">
+          <FaChartLine size={40} className="text-blue-500" />
+          <div>
+            <p className="text-gray-500">Total Ventas</p>
+            <p className="text-2xl font-bold">$25,000</p>
+          </div>
         </div>
-      ) : (
-        <p className="text-gray-700">No hay datos disponibles.</p>
-      )}
+
+        {/* Estadística 2 */}
+        <div className="bg-white shadow rounded-lg p-6 flex items-center space-x-4">
+          <FaUsers size={40} className="text-green-500" />
+          <div>
+            <p className="text-gray-500">Usuarios Activos</p>
+            <p className="text-2xl font-bold">1,200</p>
+          </div>
+        </div>
+
+        {/* Estadística 3 */}
+        <div className="bg-white shadow rounded-lg p-6 flex items-center space-x-4">
+          <FaMusic size={40} className="text-purple-500" />
+          <div>
+            <p className="text-gray-500">Nuevos Artistas</p>
+            <p className="text-2xl font-bold">75</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Gráfico de Ventas */}
+      <div className="bg-white shadow rounded-lg p-6">
+        <h3 className="text-xl font-semibold mb-4">Ventas Mensuales</h3>
+        {/* Aquí puedes integrar un gráfico utilizando una librería como Chart.js o Recharts */}
+        <div className="h-64 flex items-center justify-center">
+          <p className="text-gray-400">Gráfico de Ventas Aquí</p>
+        </div>
+      </div>
+
+      {/* Lista de Actividades Recientes */}
+      <div className="bg-white shadow rounded-lg p-6">
+        <h3 className="text-xl font-semibold mb-4">Actividades Recientes</h3>
+        <ul className="space-y-3">
+          <li className="flex items-center space-x-4">
+            <FaUsers className="text-green-500" />
+            <div>
+              <p className="font-semibold">Nuevo Usuario Registrado</p>
+              <p className="text-gray-500 text-sm">Hace 2 horas</p>
+            </div>
+          </li>
+          <li className="flex items-center space-x-4">
+            <FaChartLine className="text-blue-500" />
+            <div>
+              <p className="font-semibold">Incremento de Ventas</p>
+              <p className="text-gray-500 text-sm">Hace 5 horas</p>
+            </div>
+          </li>
+          <li className="flex items-center space-x-4">
+            <FaMusic className="text-purple-500" />
+            <div>
+              <p className="font-semibold">Nuevo Artista Agregado</p>
+              <p className="text-gray-500 text-sm">Hace 1 día</p>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

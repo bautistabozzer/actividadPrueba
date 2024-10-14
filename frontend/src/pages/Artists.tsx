@@ -118,14 +118,19 @@ const Artists: React.FC = () => {
 
   return (
     <div className="p-5">
-      <h2 className="text-2xl font-bold text-center mb-6">Artistas</h2>
+      <h2 className="text-3xl font-bold text-center mb-6">Artistas</h2>
       {error && <p className="text-red-500 text-center mb-4">{error}</p>}
       {loading ? (
         <p className="text-center">Cargando artistas...</p>
       ) : (
         <>
-          <form onSubmit={handleAddArtist} className="max-w-2xl mx-auto mb-8 p-6 border border-gray-300 rounded-lg">
-            <h3 className="text-xl font-semibold text-center mb-4">Agregar Nuevo Artista</h3>
+          <form
+            onSubmit={handleAddArtist}
+            className="max-w-2xl mx-auto mb-8 p-6 border border-gray-300 rounded-lg bg-white shadow"
+          >
+            <h3 className="text-2xl font-semibold text-center mb-4">
+              Agregar Nuevo Artista
+            </h3>
             <div className="mb-4">
               <label className="block mb-2">Nombre:</label>
               <input
@@ -143,7 +148,7 @@ const Artists: React.FC = () => {
                   rounded 
                   focus:outline-none 
                   focus:ring-2 
-                  focus:ring-gray-800
+                  focus:ring-blue-500
                 "
               />
             </div>
@@ -163,7 +168,7 @@ const Artists: React.FC = () => {
                   rounded 
                   focus:outline-none 
                   focus:ring-2 
-                  focus:ring-gray-800
+                  focus:ring-blue-500
                 "
               />
             </div>
@@ -183,7 +188,7 @@ const Artists: React.FC = () => {
                   rounded 
                   focus:outline-none 
                   focus:ring-2 
-                  focus:ring-gray-800
+                  focus:ring-blue-500
                 "
               />
             </div>
@@ -203,7 +208,7 @@ const Artists: React.FC = () => {
                   rounded 
                   focus:outline-none 
                   focus:ring-2 
-                  focus:ring-gray-800
+                  focus:ring-blue-500
                 "
               />
             </div>
@@ -233,7 +238,7 @@ const Artists: React.FC = () => {
                   rounded 
                   focus:outline-none 
                   focus:ring-2 
-                  focus:ring-gray-800
+                  focus:ring-blue-500
                 "
               />
             </div>
@@ -242,11 +247,11 @@ const Artists: React.FC = () => {
               className="
                 w-full 
                 py-2 
-                bg-gray-800 
+                bg-blue-600 
                 text-white 
                 rounded 
                 cursor-pointer 
-                hover:bg-gray-700 
+                hover:bg-blue-700 
                 transition-colors
               "
             >
@@ -287,7 +292,7 @@ const Artists: React.FC = () => {
                         rounded 
                         focus:outline-none 
                         focus:ring-2 
-                        focus:ring-gray-800
+                        focus:ring-blue-500
                       "
                     />
                   </td>
@@ -307,7 +312,7 @@ const Artists: React.FC = () => {
                         rounded 
                         focus:outline-none 
                         focus:ring-2 
-                        focus:ring-gray-800
+                        focus:ring-blue-500
                       "
                     />
                   </td>
@@ -327,7 +332,7 @@ const Artists: React.FC = () => {
                         rounded 
                         focus:outline-none 
                         focus:ring-2 
-                        focus:ring-gray-800
+                        focus:ring-blue-500
                       "
                     />
                   </td>
@@ -347,18 +352,18 @@ const Artists: React.FC = () => {
                         rounded 
                         focus:outline-none 
                         focus:ring-2 
-                        focus:ring-gray-800
+                        focus:ring-blue-500
                       "
                     />
                   </td>
-                  <td className="border border-gray-300 px-4 py-2">
+                  <td className="border border-gray-300 px-4 py-2 text-center">
                     <input
                       type="checkbox"
                       checked={artist.active}
                       onChange={(e) =>
                         handleUpdateArtist(artist.id, 'active', e.target.checked)
                       }
-                      className="transform scale-125"
+                      className="transform scale-150"
                     />
                   </td>
                   <td className="border border-gray-300 px-4 py-2">
@@ -377,11 +382,11 @@ const Artists: React.FC = () => {
                         rounded 
                         focus:outline-none 
                         focus:ring-2 
-                        focus:ring-gray-800
+                        focus:ring-blue-500
                       "
                     />
                   </td>
-                  <td className="border border-gray-300 px-4 py-2">
+                  <td className="border border-gray-300 px-4 py-2 text-center">
                     <button
                       onClick={() => handleDeleteArtist(artist.id)}
                       className="
