@@ -1,81 +1,75 @@
-// src/pages/Dashboard.tsx
+// frontend/src/pages/Dashboard.tsx
 import React from 'react';
-import { FaChartLine, FaUsers, FaMusic } from 'react-icons/fa';
 
 const Dashboard: React.FC = () => {
-  return (
-    <div className="flex flex-col space-y-6">
-      {/* Encabezado */}
-      <h2 className="text-3xl font-semibold">Dashboard</h2>
-
-      {/* Sección de Estadísticas */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Estadística 1 */}
-        <div className="bg-white shadow rounded-lg p-6 flex items-center space-x-4">
-          <FaChartLine size={40} className="text-blue-500" />
-          <div>
-            <p className="text-gray-500">Total Ventas</p>
-            <p className="text-2xl font-bold">$25,000</p>
-          </div>
-        </div>
-
-        {/* Estadística 2 */}
-        <div className="bg-white shadow rounded-lg p-6 flex items-center space-x-4">
-          <FaUsers size={40} className="text-green-500" />
-          <div>
-            <p className="text-gray-500">Usuarios Activos</p>
-            <p className="text-2xl font-bold">1,200</p>
-          </div>
-        </div>
-
-        {/* Estadística 3 */}
-        <div className="bg-white shadow rounded-lg p-6 flex items-center space-x-4">
-          <FaMusic size={40} className="text-purple-500" />
-          <div>
-            <p className="text-gray-500">Nuevos Artistas</p>
-            <p className="text-2xl font-bold">75</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Gráfico de Ventas */}
-      <div className="bg-white shadow rounded-lg p-6">
-        <h3 className="text-xl font-semibold mb-4">Ventas Mensuales</h3>
-        {/* Aquí puedes integrar un gráfico utilizando una librería como Chart.js o Recharts */}
-        <div className="h-64 flex items-center justify-center">
-          <p className="text-gray-400">Gráfico de Ventas Aquí</p>
-        </div>
-      </div>
-
-      {/* Lista de Actividades Recientes */}
-      <div className="bg-white shadow rounded-lg p-6">
-        <h3 className="text-xl font-semibold mb-4">Actividades Recientes</h3>
-        <ul className="space-y-3">
-          <li className="flex items-center space-x-4">
-            <FaUsers className="text-green-500" />
-            <div>
-              <p className="font-semibold">Nuevo Usuario Registrado</p>
-              <p className="text-gray-500 text-sm">Hace 2 horas</p>
+    return (
+        <div className="pt-20 px-4"> {/* Ajuste para evitar solapamiento con el Navbar */}
+            <div className="max-w-7xl mx-auto">
+                <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
+                
+                {/* Contenedor Principal del Dashboard */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {/* Tarjeta 1 */}
+                    <div className="bg-white shadow-md rounded-lg p-6">
+                        <h2 className="text-xl font-semibold mb-2">Ingresos Totales</h2>
+                        <p className="text-2xl text-green-500">$50,000</p>
+                    </div>
+                    
+                    {/* Tarjeta 2 */}
+                    <div className="bg-white shadow-md rounded-lg p-6">
+                        <h2 className="text-xl font-semibold mb-2">Ventas Mensuales</h2>
+                        <p className="text-2xl text-blue-500">120</p>
+                    </div>
+                    
+                    {/* Tarjeta 3 */}
+                    <div className="bg-white shadow-md rounded-lg p-6">
+                        <h2 className="text-xl font-semibold mb-2">Nuevos Clientes</h2>
+                        <p className="text-2xl text-purple-500">75</p>
+                    </div>
+                    
+                    {/* Agrega más tarjetas o componentes según sea necesario */}
+                </div>
+                
+                {/* Sección de Gráficos */}
+                <div className="mt-8">
+                    <h2 className="text-2xl font-semibold mb-4">Estadísticas</h2>
+                    {/* Aquí puedes integrar gráficos utilizando bibliotecas como Chart.js o Recharts */}
+                    <div className="bg-white shadow-md rounded-lg h-64 flex items-center justify-center">
+                        <p className="text-gray-400">Gráfico de ejemplo</p>
+                    </div>
+                </div>
+                
+                {/* Sección de Tablas */}
+                <div className="mt-8">
+                    <h2 className="text-2xl font-semibold mb-4">Últimas Transacciones</h2>
+                    <div className="overflow-x-auto">
+                        <table className="min-w-full bg-white shadow-md rounded-lg">
+                            <thead>
+                                <tr>
+                                    <th className="py-2 px-4 border-b">Cliente</th>
+                                    <th className="py-2 px-4 border-b">Producto</th>
+                                    <th className="py-2 px-4 border-b">Cantidad</th>
+                                    <th className="py-2 px-4 border-b">Total</th>
+                                    <th className="py-2 px-4 border-b">Fecha</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {/* Itera sobre tus datos y renderiza las filas */}
+                                <tr>
+                                    <td className="py-2 px-4 border-b">Juan Pérez</td>
+                                    <td className="py-2 px-4 border-b">Producto A</td>
+                                    <td className="py-2 px-4 border-b">10</td>
+                                    <td className="py-2 px-4 border-b">$1,000</td>
+                                    <td className="py-2 px-4 border-b">2024-10-01</td>
+                                </tr>
+                                {/* Agrega más filas según sea necesario */}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-          </li>
-          <li className="flex items-center space-x-4">
-            <FaChartLine className="text-blue-500" />
-            <div>
-              <p className="font-semibold">Incremento de Ventas</p>
-              <p className="text-gray-500 text-sm">Hace 5 horas</p>
-            </div>
-          </li>
-          <li className="flex items-center space-x-4">
-            <FaMusic className="text-purple-500" />
-            <div>
-              <p className="font-semibold">Nuevo Artista Agregado</p>
-              <p className="text-gray-500 text-sm">Hace 1 día</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  );
+        </div>
+    );
 };
 
 export default Dashboard;

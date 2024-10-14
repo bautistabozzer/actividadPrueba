@@ -1,59 +1,29 @@
-// src/components/Layout.tsx
-import React, { useState, useEffect } from 'react';
+// frontend/src/components/Layout.tsx
+import React from 'react';
 import Navbar from './Navbar';
-import Sidebar from './Sidebar';
-import Footer from './Footer';
+import Sidebar from './Sidebar'; // Asegúrate de tener un componente Sidebar
+import { useState } from 'react';
 
 interface LayoutProps {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  // Estado para manejar la visibilidad del Sidebar, inicializado desde localStorage
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(() => {
-    const storedState = localStorage.getItem('isSidebarOpen');
-    return storedState ? JSON.parse(storedState) : true;
-  });
+    const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
-  // Función para togglear el Sidebar
-  const toggleSidebar = () => {
-    setIsSidebarOpen((prev) => !prev);
-  };
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    };
 
-  // Efecto para guardar el estado en localStorage
-  useEffect(() => {
-    localStorage.setItem('isSidebarOpen', JSON.stringify(isSidebarOpen));
-  }, [isSidebarOpen]);
-
-  return (
-    <div className="flex">
-      {/* Sidebar */}
-      <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-
-      {/* Contenido Principal */}
-      <div className="flex-1 flex flex-col">
-        {/* Navbar */}
-        <Navbar toggleSidebar={toggleSidebar} />
-
-        {/* Espaciado para el Navbar fijo */}
-        <div className="mt-16"></div> {/* Ajusta según la altura del Navbar */}
-
-        {/* Contenido */}
-        <main
-          className={`
-            p-6 flex-1 overflow-auto mb-16
-            transition-margin duration-300 ease-in-out
-            ${isSidebarOpen ? 'ml-64' : 'ml-20'}
-          `}
-        >
-          {children}
-        </main>
-
-        {/* Footer */}
-        <Footer />
-      </div>
-    </div>
-  );
+    return (
+        <>
+            <Navbar toggleSidebar={toggleSidebar} />
+            <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+            <main className="pt-20 pl-0 md:pl-64"> {/* Ajusta pl-64 si tu Sidebar tiene un ancho de 16rem (256px) */}
+                {children}
+            </main>
+        </>
+    );
 };
 
 export default Layout;
