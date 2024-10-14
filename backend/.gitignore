@@ -1,0 +1,100 @@
+# **Directorios de Dependencias**
+# Ignora la carpeta de módulos de Node.js
+node_modules/
+
+# **Archivos de Configuración de Entorno**
+# Ignora archivos que contienen variables de entorno sensibles
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# **Directorios de Compilación y Distribución**
+# Ignora carpetas de compilación de TypeScript u otras herramientas de construcción
+dist/
+build/
+out/
+
+# **Archivos de TypeScript**
+# Ignora archivos de información de compilación de TypeScript
+*.tsbuildinfo
+
+# **Logs**
+# Ignora archivos y carpetas de logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# **Cobertura de Pruebas**
+# Ignora carpetas de cobertura generadas por herramientas como Jest
+coverage/
+
+# **Archivos del Sistema Operativo**
+# Ignora archivos específicos de macOS y Windows
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+
+# **Archivos Temporales y de Caché**
+# Ignora archivos temporales y de caché
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo
+.cache/
+.pnp/
+.pnp.js
+
+# **Archivos de IDE y Editores de Código**
+# Ignora configuraciones específicas de editores y entornos de desarrollo
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.sublime-project
+*.sublime-workspace
+
+# **Archivos de Certificados y Claves**
+# Ignora archivos sensibles como certificados SSL y claves privadas
+*.pem
+*.key
+*.crt
+
+# **Otros Archivos Generados**
+# Ignora otros archivos generados automáticamente que no son necesarios
+public/
+.sass-cache/
+*.lock
+
+# **Configuraciones de Herramientas de Linting y Formateo**
+# Ignora archivos de configuración local de herramientas como ESLint y Prettier
+.eslintcache
+.prettierignore
+.prettierrc
+
+# **Archivos de Base de Datos**
+# Si usas bases de datos locales que generan archivos, ignóralos aquí
+*.sqlite
+*.db
+
+# **Docker**
+# Ignora archivos específicos de Docker
+docker-compose.override.yml
+Dockerfile.dev
+
+# **CI/CD**
+# Ignora configuraciones de integración continua y despliegue continuo
+.github/
+.gitlab/
+
+# **Otros**
+# Añade aquí cualquier otro archivo o carpeta que desees ignorar
