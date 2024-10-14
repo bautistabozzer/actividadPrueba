@@ -1,13 +1,26 @@
 // src/components/Navbar.tsx
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
+import { AuthContext } from '../contexts/AuthContext'; // Asegúrate de que la ruta es correcta
 
 interface NavbarProps {
   toggleSidebar: () => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
+  const { isAuthenticated, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout(); // Llama al método logout del contexto de autenticación
+    navigate('/login'); // Redirige al usuario a la página de login
+  };
+
+  if (!isAuthenticated) {
+    return null; // No renderizar el Navbar si el usuario no está autenticado
+  }
+
   return (
     <nav className="bg-gray-800 text-white px-6 py-4 flex justify-between items-center fixed top-0 left-0 right-0 z-40">
       {/* Botón para abrir el Sidebar */}
@@ -39,9 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
         </li>
         <li>
           <button
-            onClick={() => {
-              // Implementa la lógica de logout aquí
-            }}
+            onClick={handleLogout}
             className="
               bg-transparent 
               border 
@@ -53,6 +64,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
               transition-colors 
               cursor-pointer
             "
+            aria-label="Cerrar Sesión"
           >
             Logout
           </button>
